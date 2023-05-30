@@ -21,7 +21,20 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   @ViewChild('canvas')
-  private canvasRef: ElementRef;
-}
+  private canvasRef: ElementRef = {} as ElementRef;
 
-declare var $: any;
+  rotationSpeedX: number = 0.05;
+  rotationSpeedY: number = 0.01;
+  size: number = 200;
+
+  cameraZ: number = 400;
+  fieldOfView: number = 1;
+  nearClippingPlane: number = 1;
+  farClippingPlane: number = 1000;
+
+  private camera!: THREE.PerspectiveCamera;
+
+  private get canvas(): HTMLCanvasElement {
+    return this.canvasRef.nativeElement;
+  }
+}
